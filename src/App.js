@@ -4,6 +4,7 @@ function App() {
   return (
     <div className="App">
       <div className = 'css' style={{color : 'red',fontSize : '50px'}}>Chào mừng đến với bình nguyên vô tận</div>
+      <div className = 'test'>Congatulation to used the git </div>
     </div>
   );
 }
