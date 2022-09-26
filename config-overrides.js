@@ -1,6 +1,9 @@
-/* config-overrides.js */
+const {
+  override, useBabelRc,
+} = require("customize-cra");
+// const path = require("path");
 
-module.exports = function override(config, env) {
-    //do stuff with the webpack config...
-    return config;
-  }
+module.exports = override(
+  // enable legacy decorators babel plugin
+  useBabelRc()
+);
