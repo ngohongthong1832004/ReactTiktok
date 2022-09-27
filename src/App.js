@@ -1,14 +1,37 @@
-import './App.css';
+import { Fragment } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { publicRoutes } from '~/routes';
+import { DefaultLayout } from '~/components/Layout';
 
 function App() {
-  return (
-    <div className="App">
-      <div className='css' style={{ color: 'red', fontSize: '50px' }}>Chào mừng đến với bình nguyên vô tận</div>
-      <div className='test'>Congatulation to used the git </div>
-      <div className='hello'> hom nay hoi ngu ti :))</div>
-    </div>
-  );
+    return (
+        <Router>
+            <div className="App">
+                <Routes>
+                    {publicRoutes.map((route, index) => {
+                        let Layout = DefaultLayout;
+                        if (route.layout) {
+                            Layout = route.layout;
+                        } else if (route.layout === null) {
+                            Layout = Fragment;
+                        }
+                        const Page = route.component;
+                        return (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                element={
+                                    <Layout>
+                                        <Page></Page>
+                                    </Layout>
+                                }
+                            />
+                        );
+                    })}
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
-
