@@ -1,17 +1,31 @@
 @import 'normalize.css';
 //here can add font family
 
-
-:root{
-    --primary : red;
+:root {
+    --primary: red;
+    --black: black;
+    --default-layout-header-height: 60px;
+    --default-layout-width: 1150px;
+    --text-color:#333;
 }
-*{
+* {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-html{
-    font-size: 62,5%;
+html {
+    font-size: 62, 5%;
 }
-body{
+body {
     font-size: 1.6rem;
+}
+
+button,input,[tabnindex]{
+    border: none;
+    outline: none;
+}
+a[href]{
+    color: var(--text-color);
+    text-decoration: none;
 }
