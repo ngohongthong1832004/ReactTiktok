@@ -37,8 +37,7 @@
         font-size: 1.2rem;
         padding: 12px 0;
         background-color: transparent;
-        caret-color: red;
-        
+        caret-color: red;  
     }
     input:not(:placeholder-shown)~.btn-search{
         color: rgba(22,24,35,0.9);
@@ -49,6 +48,14 @@
         // border: 1.5px solid red;
     }
 
+}
+.search, .search-result{
+    width: 361px;
+}
+.search-title{
+    color: rgba(22,24,35,0.6);
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 .clear{
     position: absolute;
