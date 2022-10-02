@@ -1,0 +1,46 @@
+.wrapper{
+    font-size: 1.2rem;
+    font-weight: 600;
+    min-width: 100px;
+    padding: 4px 16px;
+    background-color: var(--while);
+    border: 1px solid transparent;
+    border-radius: 5px;
+    + .wrapper {
+        margin-left: 8px;
+    }
+}
+.primary{
+    color: var(--while);
+    background-color: var(--primary);
+    &:hover {
+        cursor: pointer;
+        opacity: 0.8;
+    }
+}
+.outline{
+    border-color: var(--primary);
+    &:hover{
+        cursor: pointer;
+        opacity: 0.8;
+    }
+}
+.small{
+    min-width: 88px;
+    padding: 4px 16px;
+}
+
+.medium{
+
+    min-width: 100px;
+    padding:4px 16px;
+}
+.large{
+    min-width: 112px;
+    padding: 4px;
+}
+.text{
+    &:hover{
+        text-decoration: underline;
+    }
+}
