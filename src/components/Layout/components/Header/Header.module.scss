@@ -60,15 +60,16 @@
 .clear{
     position: absolute;
     right: 70px;
-top: 50%;
-transform: translateY(-50%);
-color: rgba(22,24,35,0.4);
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(22,24,35,0.4);
 
 }
 .loading{
 position: absolute;
 font-size: 16px;
 right: 70px;
+
 top: 50%;
 transform: translateY(-50%);
 color: rgba(22,24,35,0.4);
@@ -88,4 +89,22 @@ color: rgba(22,24,35,0.4);
         background-color: rgba(22,24,35,0.03);
 
     }
+}
+.test{
+    color: aqua;
+}
+.more-btn{
+    margin-left: 18px;
+    padding: 6px;
+
+    background-color: var(--white);
+}
+.menu-items{
+    width: 224px;
+
+}
+.btn-bars{
+    margin-left: 10px;
+    padding: 6px;
+    background-color: var(--white);
 }

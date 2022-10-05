@@ -6,23 +6,41 @@
     background-color: var(--while);
     border: 1px solid transparent;
     border-radius: 5px;
+    user-select: none;
     + .wrapper {
         margin-left: 8px;
     }
-}
-.primary{
-    color: var(--while);
-    background-color: var(--primary);
-    &:hover {
-        cursor: pointer;
-        opacity: 0.8;
+    &.disabled{
+        pointer-events: none;
+        opacity: 0.6;
     }
 }
+.round{
+    border: 1px solid black;
+    border-radius: 999px;
+    &:hover{
+        cursor: pointer;
+        opacity: 0.8;
+        background-color: rgba(22, 24 ,35, 0.12 );
+    }
+}
+
 .outline{
     border-color: var(--primary);
     &:hover{
         cursor: pointer;
         opacity: 0.8;
+    }
+}
+.primary{
+    color: var(--while);
+    background-color: var(--primary);
+    border-color: var(--primary);
+    &:hover {
+        cursor: pointer;
+        opacity: 0.8;
+        background-color: var(--primary);
+        border-color: var(--primary);
     }
 }
 .small{
@@ -42,5 +60,17 @@
 .text{
     &:hover{
         text-decoration: underline;
+        cursor: pointer;
     }
+}
+
+.icon + .title,
+.title + .icon {
+    margin-left: 8px;
+}
+
+
+.icon{
+    display: inline-block;
+    width: 20px;
 }

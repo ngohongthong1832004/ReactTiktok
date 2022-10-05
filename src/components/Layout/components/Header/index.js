@@ -1,17 +1,36 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import {faCircleXmark, faEarthAfrica, faEllipsisVertical, faMagnifyingGlass, faQuestion, faQuestionCircle, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/headless'; // different import path!
 
 
-import Button from '~/components/Button'
+import Button from '~/components/Button';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
-import {Wrapper as PopperWrapper} from '~/components/Popper'
+import {Wrapper as PopperWrapper} from '~/components/Popper';
+import Menu from '~/components/Popper/Menu/Menu.js';
 import AcountItem from '~/components/AcountItem';
+import { faKeyboard } from '@fortawesome/free-regular-svg-icons';
 
 
+
+
+const MENU_ITEMS = [
+    {
+        icon : <FontAwesomeIcon icon = {faEarthAfrica}/>,
+        title : 'English',
+    },
+    {
+        icon : <FontAwesomeIcon icon = {faQuestionCircle}/>,
+        title : 'Feedback',
+        to : '/feedback'
+    },
+    {
+        icon : <FontAwesomeIcon icon = {faKeyboard}/>,
+        title : 'Keyboard',
+    }
+]
 
 const cx = classNames.bind(styles);
 function Header() {
@@ -31,7 +50,7 @@ function Header() {
                 </div>
                 <Tippy
                     //this is the logic click input
-                    visible ={resultInput.length > 0}
+                    // visible ={resultInput.length > 0}
                     // this is the logic selecter whole
                     interactive = {true}
                     render={attrs => (
@@ -62,9 +81,19 @@ function Header() {
                     </div>
                 </Tippy>
                 <div className={cx('actions')}>
-                    <Button outline large >Log In</Button>
-                    <Button outline large >Register</Button>
-                    <Button text >Text</Button>
+                    {/* <Button outline large iconRight={<FontAwesomeIcon icon={faMagnifyingGlass}/>}>Register</Button> */}
+                    <Button text >Up Load</Button>
+                    <Button  primary >Log In</Button>
+                    {/* <Button ouline round className={cx('test')}>uu</Button> */}
+                    {/* <Button disabled primary large >Text</Button> */}
+                        <Menu
+                            items = {MENU_ITEMS}
+                        
+                        >
+                            <button className={cx('btn-bars')}>
+                                <FontAwesomeIcon icon={faEllipsisVertical} />
+                            </button>
+                        </Menu>
                 </div>
             </div>
         </header>

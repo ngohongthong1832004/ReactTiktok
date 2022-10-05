@@ -6,4 +6,8 @@
     max-height: min((100vh - 96px) - 60px, 734px);
     min-height: 100px;
     padding-top: 8px;
+    //cai nay minh tu them do de fix cai loi
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
