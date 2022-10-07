@@ -108,3 +108,22 @@ color: rgba(22,24,35,0.4);
     padding: 6px;
     background-color: var(--white);
 }
+
+.actions{
+    display: flex;
+    align-items: center;
+}
+.action-btn{
+    background-color:transparent;
+    font-size:1.5rem;
+    padding: 4px;
+    margin: 4px;
+
+}
+.user-avatar{
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 999px;
+    margin-left: 4px;
+}

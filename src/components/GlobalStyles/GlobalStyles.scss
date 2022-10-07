@@ -30,3 +30,13 @@ a[href]{
     color: var(--text-color);
     text-decoration: none;
 }
+
+body {
+    .tippy-box{
+    border-radius:8px;
+    background-color: rgb(237, 169, 169);
+    }
+    .tippy-arrow{
+    color: rgb(237, 169, 169);
+    }
+}
