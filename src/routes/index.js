@@ -9,7 +9,8 @@ import { HeaderOnly } from '~/components/Layout';
 export const publicRoutes = [
     { path: '/', component: Home },
     { path: '/following', component: Following },
-    { path: '/profile', component: Profile },
+    ///@ de match voi data con sau dau : thi la pathen co the thay doi
+    { path: '/@:nickname', component: Profile },
     { path: '/upload', component: Upload, layout: HeaderOnly },
     { path: '/search', component: Search, layout: null },
 ];

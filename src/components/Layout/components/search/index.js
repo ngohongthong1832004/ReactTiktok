@@ -6,6 +6,7 @@ import classNames from 'classnames/bind';
 import { useEffect, useState, useRef } from 'react';
 import styles from './Search.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {useDebounce} from '~/hooks'
 
 
 
@@ -17,24 +18,40 @@ const cx = classNames.bind(styles)
 
 function Search() {
 
-    const [resultInput,setResultInput] = useState([])
+    const [sreachResult,setSearchResult] = useState([])
     const [searchValue,setSearchValue] = useState('')
     const [showResult,setShowResult] = useState(true)
+    const [loading,setLoading] = useState(false)
     const inputRef = useRef()
     
+    const debounce = useDebounce(searchValue,500)
     useEffect(()=>{
-        setTimeout(()=>{
-            setResultInput([1,2,3])
-        },1000)
 
-    },[])
+        if(!debounce.trim()){
+            setSearchResult([])
+            return;
+         }
+        setLoading(true)
+        //                                               dung de ma hoa cac du lieu nhap vao
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounce)}&type=less`)
+            .then(res => res.json())
+            .then(res => {
+                setSearchResult(res.data);
+                setLoading(false);
+            })
+            .catch(()=>{
+                setLoading(false)
+            })
+
+
+    },[debounce])
     const handleHideResult=()=>{
         setShowResult(false)
     }
     return ( 
         <HeadlessTippy
                     //this is the logic click input
-                    visible ={showResult && resultInput.length > 0}
+                    visible ={showResult && sreachResult.length > 0}
                     // this is the logic selecter whole
                     interactive = {true}
                     onClickOutside = {handleHideResult}
@@ -45,10 +62,9 @@ function Search() {
                                     <h4 className={cx('search-title')}>
                                         Acount
                                     </h4>
-                                    <AcountItem/>
-                                    <AcountItem/>
-                                    <AcountItem/>
-                                    <AcountItem/>
+                                {sreachResult.map((result)=>{
+                                    return <AcountItem key={result.id} data ={result}/>
+                                })}
                                 </PopperWrapper>  
                             </div>
                        
@@ -63,19 +79,19 @@ function Search() {
                             onChange = {e=>setSearchValue(e.target.value)}
                             onFocus = {()=> setShowResult(true)}
                         />
-                        {!!searchValue && (
+                        {!!searchValue && !loading && (
                         <button 
                             className={cx('clear')} 
                             onClick = {()=>{
                                 setSearchValue('')
-                                setResultInput([])
+                                setSearchResult([])
                                  inputRef.current.focus() 
                                 }
                             }
                         >
                             <FontAwesomeIcon icon={faCircleXmark} />
                         </button>)}
-                            {/* <FontAwesomeIcon className={cx('loading')} icon={faSpinner}/> */}
+                            {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner}/>}
                         <button className={cx('btn-search')}>
                             <FontAwesomeIcon icon={faMagnifyingGlass}/>
                         </button>
