@@ -12,6 +12,9 @@ import Menu from '~/components/Popper/Menu/Menu.js';
 import { faKeyboard } from '@fortawesome/free-regular-svg-icons';
 import { UploadIcon } from '~/components/icon';
 import Image from '~/components/img';
+import { Link } from 'react-router-dom';
+import routesConfig from '~/config/routes';
+
 
 
 
@@ -32,6 +35,7 @@ const MENU_ITEMS = [
                     code :'vi',
                     title :'Viet'
                 }
+                
             ]
         }
     },
@@ -91,13 +95,16 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                   <img src={images.logo.default} alt='tiktok'/>
+                   <Link to={routesConfig.home}><img src={images.logo.default} alt='tiktok'/></Link>
                 </div>
                 <Search></Search>
                     <div className={cx('actions')}>
                             {currentUser ?(
                                 <>
-                                    <Tippy delay = {[0,200]} content = 'Upload Video' placement='bottom'>
+                                    <Tippy 
+                                        delay = {[0,200]} 
+                                        content = 'Upload Video' 
+                                        placement='bottom'>
                                         <button className={cx('action-btn')}>
                                             <UploadIcon/>
 

@@ -45,55 +45,67 @@ function Search() {
     const handleHideResult=()=>{
         setShowResult(false)
     }
+    const handleOnChange=(e)=>{
+        const searchValue = e.target.value
+        if(!searchValue.startsWith(' ')){
+            setSearchValue(searchValue)
+        }
+        
+    }
+        const handleSubmit = (e)=>{
+            e.preventDefault()
+    }
     return ( 
-        <HeadlessTippy
-                    //this is the logic click input
-                    visible ={showResult && sreachResult.length > 0}
-                    // this is the logic selecter whole
-                    interactive = {true}
-                    onClickOutside = {handleHideResult}
-                    render={attrs => (
-                       
-                            <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                               <PopperWrapper >
-                                    <h4 className={cx('search-title')}>
-                                        Acount
-                                    </h4>
-                                {sreachResult.map((result)=>{
-                                    return <AcountItem key={result.id} data ={result}/>
-                                })}
-                                </PopperWrapper>  
-                            </div>
-                       
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input 
-                            ref = {inputRef}
-                            value={searchValue}
-                            placeholder='Search here' 
-                            spellCheck={false} 
-                            onChange = {e=>setSearchValue(e.target.value)}
-                            onFocus = {()=> setShowResult(true)}
-                        />
-                        {!!searchValue && !loading && (
-                        <button 
-                            className={cx('clear')} 
-                            onClick = {()=>{
-                                setSearchValue('')
-                                setSearchResult([])
-                                 inputRef.current.focus() 
+        <div>
+            <HeadlessTippy
+                        //this is the logic click input
+                        visible ={showResult && sreachResult.length > 0}
+                        // this is the logic selecter whole
+                        interactive = {true}
+                        onClickOutside = {handleHideResult}
+                        render={attrs => (
+            
+                                <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                                   <PopperWrapper >
+                                        <h4 className={cx('search-title')}>
+                                            Acount
+                                        </h4>
+                                    {sreachResult.map((result)=>{
+                                        return <AcountItem key={result.id} data ={result}/>
+                                    })}
+                                    </PopperWrapper>
+                                </div>
+            
+                        )}
+                    >
+                        <div className={cx('search')}>
+                            <input
+                                ref = {inputRef}
+                                value={searchValue}
+                                placeholder='Search here'
+                                spellCheck={false}
+                                onChange = {handleOnChange}
+                                onFocus = {()=> setShowResult(true)}
+                            />
+                            {!!searchValue && !loading && (
+                            <button
+                                className={cx('clear')}
+                                onClick = {()=>{
+                                    setSearchValue('')
+                                    setSearchResult([])
+                                     inputRef.current.focus()
+                                    }
                                 }
-                            }
-                        >
-                            <FontAwesomeIcon icon={faCircleXmark} />
-                        </button>)}
-                            {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner}/>}
-                        <button className={cx('btn-search')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass}/>
-                        </button>
-                    </div>
-                </HeadlessTippy>
+                            >
+                                <FontAwesomeIcon icon={faCircleXmark} />
+                            </button>)}
+                                {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner}/>}
+                            <button className={cx('btn-search')} onMouseDown ={handleSubmit}>
+                                <FontAwesomeIcon icon={faMagnifyingGlass}/>
+                            </button>
+                        </div>
+                    </HeadlessTippy>
+        </div>
      );
 }
 

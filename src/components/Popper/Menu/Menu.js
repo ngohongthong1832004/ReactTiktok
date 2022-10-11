@@ -9,7 +9,7 @@ const cx = classNames.bind(styles);
 
 
 const defaultFc = ()=>{}
-function Menu({children , items = [], onChange=defaultFc}) {
+function Menu({children , items = [],hideOnClick = "true", onChange=defaultFc}) {
     const [history,setHistory] = useState([{data : items}])
     const current = history[history.length - 1]
     
@@ -34,6 +34,7 @@ function Menu({children , items = [], onChange=defaultFc}) {
                     //this is the logic click input
                     // visible ={resultInput.length > 0}
                     // this is the logic selecter whole
+                    hideOnClick = {hideOnClick = "false"}
                     delay={[0,500]}
                     offset={[18,10]}
                     placement= 'bottom-end'
@@ -45,7 +46,7 @@ function Menu({children , items = [], onChange=defaultFc}) {
                                    {history.length>1 && <Header title="langues" onBack={()=>{
                                     setHistory(pre=>pre.slice(0,pre.length-1))
                                    }}/>}
-                                    {renderItem()}
+                                    <div className={cx('body')}>{renderItem()}</div>
                                 </PopperWrapper>  
                             </div>
                        
