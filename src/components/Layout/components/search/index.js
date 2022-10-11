@@ -7,8 +7,8 @@ import { useEffect, useState, useRef } from 'react';
 import styles from './Search.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {useDebounce} from '~/hooks'
-
-
+import axios from 'axios';
+import * as searchServices from '~/apiServices/searchServices';
 
 
 const cx = classNames.bind(styles)
@@ -31,17 +31,14 @@ function Search() {
             setSearchResult([])
             return;
          }
+        
+       const fetchApi = async()=>{
         setLoading(true)
-        //                                               dung de ma hoa cac du lieu nhap vao
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounce)}&type=less`)
-            .then(res => res.json())
-            .then(res => {
-                setSearchResult(res.data);
-                setLoading(false);
-            })
-            .catch(()=>{
-                setLoading(false)
-            })
+        const result = await searchServices.search(debounce,"less")
+        setSearchResult(result)
+        setLoading(false)
+       }
+       fetchApi()
 
 
     },[debounce])
