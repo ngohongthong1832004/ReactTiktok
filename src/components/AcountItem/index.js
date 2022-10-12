@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames/bind";
@@ -7,7 +9,7 @@ import styles from './AcountItem.module.scss'
 const cx = classNames.bind(styles)
 
 
-function AcountItem( {data}) {
+function AcountItem ( {data}) {
     return ( 
         <Link to = {`/@${data.nickname}`} className={cx('wrapper')}>
             <img className={cx('avatar')} src={data.avatar} alt={data.full_name} />
@@ -22,5 +24,7 @@ function AcountItem( {data}) {
         </Link>
      );
 }
-
+AcountItem.propTypes = {
+    data: PropTypes.object.isRequired
+}
 export default AcountItem;

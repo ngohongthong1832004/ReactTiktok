@@ -2,6 +2,9 @@
 import classNames from 'classnames/bind';
 import styles from './Menu.module.scss'
 import Button from "~/components/Button";
+import PropTypes from 'prop-types'
+import Menu from './Menu';
+
 const cx = classNames.bind(styles);
 
 function MenuItem( {data, onClick}) {
@@ -15,5 +18,8 @@ function MenuItem( {data, onClick}) {
         </Button>
      );
 }
-
+Menu.propTypes = {
+    data : PropTypes.object.isRequired,
+    data : PropTypes.func,
+}
 export default MenuItem;

@@ -13,7 +13,7 @@ import { faKeyboard } from '@fortawesome/free-regular-svg-icons';
 import { UploadIcon } from '~/components/icon';
 import Image from '~/components/img';
 import { Link } from 'react-router-dom';
-import routesConfig from '~/config/routes';
+import config from '~/config';
 
 
 
@@ -95,7 +95,7 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                   <Link to={routesConfig.home}><img src={images.logo.default} alt='tiktok'/></Link>
+                   <Link to={config.routes.home}><img src={images.logo.default} alt='tiktok'/></Link>
                 </div>
                 <Search></Search>
                     <div className={cx('actions')}>

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
@@ -56,5 +57,25 @@ function Button( {
          </Component>
      );
 }
- 
+ Button.prototype = {
+    children:PropTypes.node.isRequired
+ }
+
+ Button.propTypes = {
+    to :PropTypes.string, 
+    href :PropTypes.string, 
+    primary :PropTypes.bool, 
+    outline :PropTypes.bool, 
+    small :PropTypes.bool, 
+    medium :PropTypes.bool, 
+    large :PropTypes.bool, 
+    text :PropTypes.bool, 
+    disabled :PropTypes.bool, 
+    round :PropTypes.bool, 
+    className :PropTypes.string, 
+    iconLeft :PropTypes.node, 
+    iconRight :PropTypes.node, 
+    onClick :PropTypes.func,
+    children :PropTypes.node.isRequired, 
+ }
 export default Button;
