@@ -57,7 +57,7 @@ function Button( {
          </Component>
      );
 }
- Button.prototype = {
+ Button.propTypes = {
     children:PropTypes.node.isRequired
  }
 
