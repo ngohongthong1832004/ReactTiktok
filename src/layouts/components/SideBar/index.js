@@ -4,6 +4,7 @@ import config from '~/config';
 import Menu from '~/layouts/components/SideBar/Menu/Menu';
 import MenuItem from '~/layouts/components/SideBar/Menu/MenuItem';
 import { HomeIcon, LiveIcon, Usericon,  } from '~/components/icon';
+import SuggestedAcount from '../SuggestAcounts';
 
 const cx = classNames.bind(styles);
 
@@ -15,6 +16,7 @@ function SideBar() {
                 <MenuItem title = "Following" to = {config.routes.following} icon= {<Usericon/>}/>
                 <MenuItem title = "Live" to = {config.routes.live} icon= {<LiveIcon/>}/>
             </Menu>
+            <SuggestedAcount lable="Suggested Account"/>
         </aside>
     );
 }

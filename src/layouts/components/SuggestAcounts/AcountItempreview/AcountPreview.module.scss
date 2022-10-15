@@ -1,0 +1,41 @@
+.wrapper{
+    padding: 20px;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.avartar{
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.item-infor{
+
+}
+.nickname{
+font-size: 18px;
+}
+.icon-tick{
+    margin-left: 6px;
+    color: aqua;
+}
+.name{
+    font-size: 16px;
+}
+.analytics{
+
+}
+.count{
+    font-size: 13px;
+}
+.lable{
+    font-size: 13px;   
+    color: red;
+}
+
+
