@@ -9,17 +9,21 @@ import AcountPreview from "./AcountItempreview";
 
 const cx = classNames.bind(styles)
 
-const renderPreview = (props)=>{
-    return (
-        <div className={cx('preview')} tabIndex = '-1' {...props}>
-            <PopperWrapper>
-                <AcountPreview></AcountPreview>
-            </PopperWrapper>
-        </div>
-    )
-}
 
-function AcountItem({}) {
+function AcountItem({data}) {
+    
+    
+    const renderPreview = (props)=>{
+        return (
+            <div className={cx('preview')} tabIndex = '-1' {...props}>
+                <PopperWrapper>
+                    <AcountPreview data = {data}></AcountPreview>
+                </PopperWrapper>
+            </div>
+        )
+    }
+    
+    
     return ( 
         <div>
             <Tippy
@@ -30,13 +34,13 @@ function AcountItem({}) {
                 offset = {[-70,0]}
             >
                 <div className={cx('acount-item')}>
-                    <img className={cx('avartar')} alt="" src="https://www.dungplus.com/wp-content/uploads/2019/12/girl-xinh-600x600.jpg"></img>
+                    <img className={cx('avartar')} alt={data.nickname} src={data.avatar}></img>
                     <div className={cx('item-infor')}>
                         <p className={cx('nickname')}>
-                            <strong >baphongpine</strong>
-                            <FontAwesomeIcon className={cx('icon-tick')} icon = {faCheckCircle}/>
+                            <strong >{data.nickname}</strong>
+                            {data.tick && <FontAwesomeIcon className={cx('icon-tick')} icon = {faCheckCircle}/>}
                         </p>
-                        <p className={cx('name')}>Ngo Hong Thong</p>
+                        <p className={cx('name')}>{`${data.first_name}${data.last_name}`}</p>
                     </div>
                 </div>
             </Tippy>

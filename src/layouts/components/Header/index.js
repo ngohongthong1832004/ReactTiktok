@@ -62,7 +62,6 @@ function Header() {
         }
         
         
-        console.log(menuItem)
     }
 
     const userMenu =[
